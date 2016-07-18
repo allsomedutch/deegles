@@ -1,3 +1,13 @@
+/**
+* APP:       DEEGLES
+* COMPANY:   Allsome Corp.
+*
+* MODULE:    MS Core Module
+*
+* DEVELOPER: Oladotun Sobande
+* DATE:      18th July 2016
+*/
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
