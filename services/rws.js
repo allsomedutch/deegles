@@ -1,6 +1,6 @@
 /**
- * APP:       DEEGLES
- * COMPANY:   Allsome Corp.
+ * APP:
+ * COMPANY:
  *
  * MODULE:    REST Web Service Endpoint Module
  *
