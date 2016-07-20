@@ -8,26 +8,18 @@
  * DATE:      18th July 2016
  */
 
-var express = require('express');
-var fs = require('fs');
-var path = require('path');
-var logger = require('morgan');
 var MobileDetect = require('mobile-detect');
 
-var app = express();
-
-var lf = fs.createWriteStream(path.join('logs/logger.log'), { flag : 'a' });
-app.use(logger('common', {stream : lf}));
+//Add code for counting mobile and web users
 
 function UserClient(req){
-    var self = this;
+    this.req = req;
     this.status = false;
-    this.isMobile(req);
 }
 
-UserClient.prototype.isMobile = function(req){
+UserClient.prototype.isMobile = function(){
     var self = this;
-    self.md = new MobileDetect(req.headers['user-agent']);
+    self.md = new MobileDetect(this.req.headers['user-agent']);
     self.os = self.md.os();
 
     switch(self.os) {
@@ -47,6 +39,7 @@ UserClient.prototype.isMobile = function(req){
     return this.status;
 };
 
-exports.checkDevice = function(req){
-    var isMobile = new UserClient(req);
+exports.checkDevice = function(rq){
+    var usc = new UserClient(rq);
+    return usc.isMobile();
 };
