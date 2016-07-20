@@ -12,12 +12,13 @@ var express = require('express');
 var fs = require('fs');
 var path = require('path');
 var logger = require('morgan');
+
 var datetime = require('../date-time');
 
 
 var app = express();
 
-var lf = fs.createWriteStream(path.join('logs/logger.log'), { flag : 'a' });
+var lf = fs.createWriteStream(path.join('logs/data-channel-logger.log'), { flag : 'a' });
 app.use(logger('common', {stream : lf}));
 
 
